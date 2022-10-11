@@ -1,2 +1,2 @@
 # CSVMin
-Getting data out of several CSVs and manipulating it
+Getting data out of several CSVs and manipulating it with Java
