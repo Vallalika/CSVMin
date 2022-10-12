@@ -38,8 +38,8 @@ public class CSVMinTest {
 
     @Test
     public void fileWithColdestTemperatureTest(){
-        // Use files 1 to 3 in 2014 folder for test to pass
-        String coldestFile = fileWithColdestTemperature();
+        // Choose files 1 to 3 in 2014 folder for test to pass
+        String coldestFile = csvMin.fileWithColdestTemperature();
         assertEquals("weather-2014-01-03.csv",coldestFile);
     }
 }
