@@ -1,3 +1,4 @@
+import edu.duke.DirectoryResource;
 import edu.duke.FileResource;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -33,5 +34,12 @@ public class CSVMinTest {
         double coldestTemp = Double.parseDouble(coldestRow.get("TemperatureF"));
         // TODO: change expected value when relevant file identified
         assertEquals(15.1,coldestTemp,0.00);
+    }
+
+    @Test
+    public void fileWithColdestTemperatureTest(){
+        // Use files 1 to 3 in 2014 folder for test to pass
+        String coldestFile = fileWithColdestTemperature();
+        assertEquals("weather-2014-01-03.csv",coldestFile);
     }
 }
