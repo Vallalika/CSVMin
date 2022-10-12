@@ -2,7 +2,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 .DS_Store
-.csv
+nc_weather/
 
 ### Java template
 # Compiled class file
