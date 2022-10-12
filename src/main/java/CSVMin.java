@@ -10,7 +10,7 @@ public class CSVMin {
             } else {
                 double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
                 double coldestTemp = Double.parseDouble(coldestRow.get("TemperatureF"));
-                if (currentTemp < coldestTemp) {
+                if (currentTemp < coldestTemp && currentTemp != -9999) {
                     coldestRow = currentRow;
                 }
             }
