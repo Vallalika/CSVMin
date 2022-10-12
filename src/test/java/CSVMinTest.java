@@ -1,9 +1,9 @@
 import edu.duke.FileResource;
 import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.testng.AssertJUnit.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 
 public class CSVMinTest {
@@ -17,8 +17,11 @@ public class CSVMinTest {
 
     @Test
     public void coldestHourInFileTest() {
-        FileResource fr = new FileResource("weather-2014-01-08.csv");
+        // works with "weather-2014-01-08.csv" in  folder2014
+        FileResource fr = new FileResource("nc_weather/2014/weather-2014-01-08.csv");
         CSVParser parser = fr.getCSVParser();
-        assertEquals(15.9,csvMin.coldestHourInFile(parser).getRecord("TemperatureF"),0.00);
+        CSVRecord coldestRow = csvMin.coldestHourInFile(parser);
+        double coldestTemp = Double.parseDouble(coldestRow.get("TemperatureF"));
+        assertEquals(15.1,coldestTemp,0.00);
     }
 }
