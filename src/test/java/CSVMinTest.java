@@ -38,6 +38,8 @@ public class CSVMinTest {
         CSVParser parser = fr.getCSVParser();
         CSVRecord lowestHumidityRow = csvMin.lowestHumidityInFile(parser);
         int lowestHumidity = Integer.parseInt(lowestHumidityRow.get("Humidity"));
+        String timeOfLowestHumidity = lowestHumidityRow.get("DateUTC");
         assertEquals(24, lowestHumidity);
+        assertEquals("2014-01-20 19:51:00", timeOfLowestHumidity);
     }
 }
