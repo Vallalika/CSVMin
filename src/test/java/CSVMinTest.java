@@ -45,7 +45,7 @@ public class CSVMinTest {
 
     @Test
     public void lowestHumidityInFileTest(){
-        FileResource fr = new FileResource("weather-2014-01-20.csv");
+        FileResource fr = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
         CSVParser parser = fr.getCSVParser();
         CSVRecord lowestHumidityRow = csvMin.lowestHumidityInFile(parser);
         int lowestHumidity = Integer.parseInt(lowestHumidityRow.get("Humidity"));

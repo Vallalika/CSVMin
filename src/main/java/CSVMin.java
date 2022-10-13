@@ -42,4 +42,21 @@ public class CSVMin {
         System.out.println(coldestFile);
         return coldestFile;
     }
+
+    public CSVRecord lowestHumidityInFile(CSVParser parser) {
+        CSVRecord lowestHumidityRow = null;
+        for (CSVRecord currentRow : parser) {
+            if (lowestHumidityRow == null) {
+                lowestHumidityRow = currentRow;
+            } else {
+                int currentHumidity = Integer.parseInt(currentRow.get("Humidity"));
+                int lowestHumidity = Integer.parseInt(lowestHumidityRow.get("Humidity"));
+                if (currentHumidity < lowestHumidity) {
+                    lowestHumidityRow = currentRow;
+                }
+            }
+        }
+        return lowestHumidityRow;
+    }
+
 }
