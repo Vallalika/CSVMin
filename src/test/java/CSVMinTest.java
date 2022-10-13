@@ -42,4 +42,13 @@ public class CSVMinTest {
         String coldestFile = csvMin.fileWithColdestTemperature();
         assertEquals("weather-2014-01-03.csv",coldestFile);
     }
+
+    @Test
+    public void lowestHumidityInFileTest(){
+        FileResource fr = new FileResource("weather-2014-01-20.csv");
+        CSVParser parser = fr.getCSVParser();
+        CSVRecord lowestHumidityRow = csvMin.lowestHumidityInFile(parser);
+        int lowestHumidity = Integer.parseInt(lowestHumidityRow.get("Humidity"));
+        assertEquals(24, lowestHumidity);
+    }
 }
