@@ -25,17 +25,6 @@ public class CSVMinTest {
         assertEquals(15.1,coldestTemp,0.00);
     }
 
-//    @Test
-    public void coldestHourInFileBogusDataTest() {
-        // TODO: find relevant data file later
-        FileResource fr = new FileResource("nc_weather/2014/weather-2014-01-08.csv");
-        CSVParser parser = fr.getCSVParser();
-        CSVRecord coldestRow = csvMin.coldestHourInFile(parser);
-        double coldestTemp = Double.parseDouble(coldestRow.get("TemperatureF"));
-        // TODO: change expected value when relevant file identified
-        assertEquals(15.1,coldestTemp,0.00);
-    }
-
     @Test
     public void fileWithColdestTemperatureTest(){
         // Choose files 1 to 3 in 2014 folder for test to pass

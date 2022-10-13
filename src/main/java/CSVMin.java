@@ -46,13 +46,15 @@ public class CSVMin {
     public CSVRecord lowestHumidityInFile(CSVParser parser) {
         CSVRecord lowestHumidityRow = null;
         for (CSVRecord currentRow : parser) {
-            if (lowestHumidityRow == null) {
+            if (lowestHumidityRow == null && currentRow.get("Humidity") != "N/A") {
                 lowestHumidityRow = currentRow;
             } else {
-                int currentHumidity = Integer.parseInt(currentRow.get("Humidity"));
-                int lowestHumidity = Integer.parseInt(lowestHumidityRow.get("Humidity"));
-                if (currentHumidity < lowestHumidity) {
-                    lowestHumidityRow = currentRow;
+                if (!currentRow.get("Humidity").equals("N/A")) {
+                    int currentHumidity = Integer.parseInt(currentRow.get("Humidity"));
+                    int lowestHumidity = Integer.parseInt(lowestHumidityRow.get("Humidity"));
+                    if (currentHumidity < lowestHumidity) {
+                        lowestHumidityRow = currentRow;
+                    }
                 }
             }
         }
