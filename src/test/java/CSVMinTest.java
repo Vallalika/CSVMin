@@ -42,4 +42,14 @@ public class CSVMinTest {
         assertEquals(24, lowestHumidity);
         assertEquals("2014-01-20 19:51:00", timeOfLowestHumidity);
     }
+
+    @Test
+    public void lowestHumidityInManyFilesTest(){
+        // run test for files 19 and 20 Jan 2014
+        CSVRecord csvRecord = csvMin.lowestHumidityInManyFiles();
+        int lowestHumidity = Integer.parseInt(csvRecord.get("Humidity"));
+        String timeOfDay = csvRecord.get("DateUTC");
+        assertEquals(24, lowestHumidity);
+        assertEquals("2014-01-20 19:51:00", timeOfDay);
+    }
 }
