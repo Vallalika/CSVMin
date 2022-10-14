@@ -89,4 +89,8 @@ public class CSVMin {
         return lowestHumidityRow;
     }
 
+    public double averageTemperatureWithHighHumidityInFile(parser, value) {
+
+    }
+
 }

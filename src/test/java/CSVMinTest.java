@@ -57,13 +57,15 @@ public class CSVMinTest {
     @Test
     public void averageTemperatureWithHighHumidityInFileNoMatchTest() {
         FileResource fr = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
-        Double avgTempsForHighHumidity = averageTemperatureWithHighHumidityInFile(parser, value);
-        assertNull(averageTemperatureWithHighHumidityInFile(parser, value));
+        CSVParser parser = fr.getCSVParser();
+        assertNull(averageTemperatureWithHighHumidityInFile(parser, 80));
     }
 
     @Test
     public void averageTemperatureWithHighHumidityInFileWithMatchesTest() {
         FileResource fr = new FileResource("nc_weather/2014/weather-2014-03-20.csv");
-        assertEquals(41.79,averageTemperatureWithHighHumidityInFile(parser, value),0.100);
+        CSVParser parser = fr.getCSVParser();
+        assertEquals(41.79,averageTemperatureWithHighHumidityInFile(parser, 80),0.100);
     }
+
 }
