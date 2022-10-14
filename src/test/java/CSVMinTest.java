@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 public class CSVMinTest {
@@ -51,5 +52,18 @@ public class CSVMinTest {
         String timeOfDay = csvRecord.get("DateUTC");
         assertEquals(24, lowestHumidity);
         assertEquals("2014-01-20 19:51:00", timeOfDay);
+    }
+
+    @Test
+    public void averageTemperatureWithHighHumidityInFileNoMatchTest() {
+        FileResource fr = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
+        Double avgTempsForHighHumidity = averageTemperatureWithHighHumidityInFile(parser, value);
+        assertNull(averageTemperatureWithHighHumidityInFile(parser, value));
+    }
+
+    @Test
+    public void averageTemperatureWithHighHumidityInFileWithMatchesTest() {
+        FileResource fr = new FileResource("nc_weather/2014/weather-2014-03-20.csv");
+        assertEquals(41.79,averageTemperatureWithHighHumidityInFile(parser, value),0.100);
     }
 }
