@@ -89,8 +89,43 @@ public class CSVMin {
         return lowestHumidityRow;
     }
 
-    public double averageTemperatureWithHighHumidityInFile(parser, value) {
-
+    public double averageTemperatureInFile(CSVParser parser) {
+        Double average = null;
+        int tempCount = 0;
+        for (CSVRecord row: parser) {
+            Double temp = Double.parseDouble(row.get("TemperatureF"));
+            if (average == null) {
+                average = temp;
+                tempCount += 1;
+            } else {
+                if (temp != -9999) {
+                    average += temp;
+                    tempCount += 1;
+                }
+            }
+        }
+        return average / tempCount;
     }
 
+    public double averageTemperatureWithHighHumidityInFile(CSVParser parser, int value) {
+        Double averageTemp = 0.00;
+        int tempCount = 0;
+        for (CSVRecord row: parser) {
+            String currentHumidityValueInStr = row.get("Humidity");
+            if (!currentHumidityValueInStr.equals("N/A")) {
+                int currentHumidityValue = Integer.parseInt(currentHumidityValueInStr);
+                if (currentHumidityValue > value && (row.get("TemperatureF") != "-9999")) {
+                    Double currentTemperature = Double.parseDouble(row.get("TemperatureF"));
+                    averageTemp += currentTemperature;
+                    tempCount += 1;
+                }
+            }
+        }
+        if (averageTemp == 0.00) {
+            System.out.println("No temperatures with that humidity");
+        } else {
+            System.out.println("Average Temp when high Humidity is " + averageTemp / tempCount);
+        }
+        return averageTemp / tempCount;
+    }
 }
